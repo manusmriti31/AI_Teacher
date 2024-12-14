@@ -1,16 +1,22 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { ChevronRight, BookOpen } from 'lucide-react';
 import { Notebook } from '../../types';
 
 interface Props {
   notebook: Notebook;
-  onClick: (notebook: Notebook) => void;
 }
 
-export default function NotebookCard({ notebook, onClick }: Props) {
+export default function NotebookCard({ notebook }: Props) {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/notebook/${notebook.id}`);
+  };
+
   return (
     <div 
-      onClick={() => onClick(notebook)}
+      onClick={handleClick}
       className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition cursor-pointer group"
     >
       <div className="flex items-start justify-between">

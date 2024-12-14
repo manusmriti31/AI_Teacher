@@ -3,16 +3,10 @@ import { PlusCircle } from 'lucide-react';
 import NotebookCard from './NotebookCard';
 import CreateNotebookModal from './CreateNotebookModal';
 import { useNotebooks } from '../../hooks/useNotebooks';
-import { Notebook } from '../../types';
 
 export default function NotebookList() {
   const { notebooks, loading, error } = useNotebooks();
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const handleNotebookClick = (notebook: Notebook) => {
-    // Handle notebook click - implement navigation or expansion
-    console.log('Notebook clicked:', notebook);
-  };
 
   const handleCreateNotebook = (data: any) => {
     // Handle notebook creation - implement API call
@@ -42,7 +36,6 @@ export default function NotebookList() {
             <NotebookCard
               key={notebook.id}
               notebook={notebook}
-              onClick={handleNotebookClick}
             />
           ))}
         </div>
