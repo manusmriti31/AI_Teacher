@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+
+{% block title %}Profile - AITutor{% endblock %}
+
+{% block content %}
+<section id="profile" class="min-h-screen p-6 lg:p-8 bg-neutral-50">
+    <div class="max-w-4xl mx-auto">
+        <!-- Profile Header -->
+        <div class="bg-white rounded-xl border border-neutral-200/20 p-6 mb-8">
+            <div class="flex flex-col md:flex-row items-center gap-6">
+                <img src="https://avatar.iran.liara.run/public" alt="Profile" class="w-24 h-24 rounded-full">
+                <div class="flex-1 text-center md:text-left">
+                    <h1 class="text-2xl font-bold text-neutral-800">John Doe</h1>
+                    <p class="text-neutral-600">Student at AI Tutor</p>
+                    <div class="flex flex-wrap gap-2 justify-center md:justify-start mt-2">
+                        <span class="px-3 py-1 text-sm bg-blue-100 text-blue-700 rounded-full">Python Developer</span>
+                        <span class="px-3 py-1 text-sm bg-green-100 text-green-700 rounded-full">Web Development</span>
+                    </div>
+                </div>
+                <button class="px-4 py-2 text-blue-500 border border-blue-500 rounded-lg hover:bg-blue-50 transition-colors">
+                    Edit Profile
+                </button>
+            </div>
+        </div>
+
+        <!-- Profile Stats -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <div class="bg-white rounded-xl border border-neutral-200/20 p-6 text-center">
+                <h3 class="text-lg font-semibold text-neutral-800 mb-2">Learning Hours</h3>
+                <p class="text-3xl font-bold text-blue-500">126</p>
+                <p class="text-neutral-600 text-sm mt-1">Total hours spent learning</p>
+            </div>
+            <div class="bg-white rounded-xl border border-neutral-200/20 p-6 text-center">
+                <h3 class="text-lg font-semibold text-neutral-800 mb-2">Completed</h3>
+                <p class="text-3xl font-bold text-green-500">15</p>
+                <p class="text-neutral-600 text-sm mt-1">Courses completed</p>
+            </div>
+            <div class="bg-white rounded-xl border border-neutral-200/20 p-6 text-center">
+                <h3 class="text-lg font-semibold text-neutral-800 mb-2">Achievements</h3>
+                <p class="text-3xl font-bold text-purple-500">8</p>
+                <p class="text-neutral-600 text-sm mt-1">Badges earned</p>
+            </div>
+        </div>
+
+        <!-- Profile Details -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <!-- Personal Information -->
+            <div class="lg:col-span-2">
+                <div class="bg-white rounded-xl border border-neutral-200/20 p-6">
+                    <h2 class="text-xl font-semibold mb-4">Personal Information</h2>
+                    <div class="space-y-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-neutral-600 mb-1">Full Name</label>
+                                <input type="text" value="John Doe" class="w-full px-4 py-2 border border-neutral-200/20 rounded-lg" disabled>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-neutral-600 mb-1">Email</label>
+                                <input type="email" value="john.doe@example.com" class="w-full px-4 py-2 border border-neutral-200/20 rounded-lg" disabled>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-neutral-600 mb-1">Location</label>
+                                <input type="text" value="New York, USA" class="w-full px-4 py-2 border border-neutral-200/20 rounded-lg" disabled>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-neutral-600 mb-1">Joined</label>
+                                <input type="text" value="January 2023" class="w-full px-4 py-2 border border-neutral-200/20 rounded-lg" disabled>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Learning Preferences -->
+            <div class="bg-white rounded-xl border border-neutral-200/20 p-6">
+                <h2 class="text-xl font-semibold mb-4">Learning Preferences</h2>
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-neutral-600 mb-1">Learning Style</label>
+                        <select class="w-full px-4 py-2 border border-neutral-200/20 rounded-lg">
+                            <option>Visual</option>
+                            <option>Auditory</option>
+                            <option>Kinesthetic</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-neutral-600 mb-1">Preferred Schedule</label>
+                        <select class="w-full px-4 py-2 border border-neutral-200/20 rounded-lg">
+                            <option>Morning</option>
+                            <option>Afternoon</option>
+                            <option>Evening</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-neutral-600 mb-1">Study Duration</label>
+                        <select class="w-full px-4 py-2 border border-neutral-200/20 rounded-lg">
+                            <option>1-2 hours/day</option>
+                            <option>2-4 hours/day</option>
+                            <option>4+ hours/day</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

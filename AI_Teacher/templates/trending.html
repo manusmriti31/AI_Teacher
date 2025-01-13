@@ -1,0 +1,146 @@
+{% extends "base.html" %}
+
+{% block title %}Trending - AITutor{% endblock %}
+
+{% block content %}
+<section id="trending" class="min-h-screen p-6 lg:p-8 bg-neutral-50">
+    <!-- Header -->
+    <div class="mb-8">
+        <h1 class="text-3xl font-bold text-neutral-800">Recommended for You</h1>
+        <p class="text-neutral-600 mt-2">Trending topics based on your interests and market demand</p>
+    </div>
+
+    <!-- Filters -->
+    <div class="flex flex-wrap gap-4 mb-8">
+        <button class="px-4 py-2 bg-blue-500 text-white rounded-lg">All Topics</button>
+        <button class="px-4 py-2 bg-white text-neutral-600 rounded-lg border border-neutral-200/20 hover:border-blue-500">Programming</button>
+        <button class="px-4 py-2 bg-white text-neutral-600 rounded-lg border border-neutral-200/20 hover:border-blue-500">Data Science</button>
+        <button class="px-4 py-2 bg-white text-neutral-600 rounded-lg border border-neutral-200/20 hover:border-blue-500">Web Development</button>
+        <button class="px-4 py-2 bg-white text-neutral-600 rounded-lg border border-neutral-200/20 hover:border-blue-500">AI/ML</button>
+    </div>
+
+    <!-- Trending Topics Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Machine Learning -->
+        <div class="bg-white rounded-xl border border-neutral-200/20 p-6">
+            <div class="flex items-start justify-between mb-4">
+                <div>
+                    <h3 class="text-xl font-semibold text-neutral-800">Machine Learning Fundamentals</h3>
+                    <div class="flex flex-wrap gap-2 mt-2">
+                        <span class="px-2 py-1 text-xs bg-purple-100 text-purple-700 rounded-full">AI/ML</span>
+                        <span class="px-2 py-1 text-xs bg-blue-100 text-blue-700 rounded-full">Data Science</span>
+                    </div>
+                </div>
+                <div class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-medium">
+                    94% Demand
+                </div>
+            </div>
+            <p class="text-neutral-600 mb-4">Master the fundamentals of machine learning algorithms and applications</p>
+            <div class="flex items-center gap-4 text-sm text-neutral-600 mb-4">
+                <span class="flex items-center gap-1">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    6 months
+                </span>
+                <span class="flex items-center gap-1">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                    </svg>
+                    10k+ enrolled
+                </span>
+            </div>
+            <button class="w-full py-2 text-blue-500 border border-blue-500 rounded-lg hover:bg-blue-50 transition-colors">Add to My Notebooks</button>
+        </div>
+
+        <!-- Full Stack Development -->
+        <div class="bg-white rounded-xl border border-neutral-200/20 p-6">
+            <div class="flex items-start justify-between mb-4">
+                <div>
+                    <h3 class="text-xl font-semibold text-neutral-800">Full Stack Development</h3>
+                    <div class="flex flex-wrap gap-2 mt-2">
+                        <span class="px-2 py-1 text-xs bg-yellow-100 text-yellow-700 rounded-full">Web Dev</span>
+                        <span class="px-2 py-1 text-xs bg-green-100 text-green-700 rounded-full">JavaScript</span>
+                    </div>
+                </div>
+                <div class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-medium">
+                    89% Demand
+                </div>
+            </div>
+            <p class="text-neutral-600 mb-4">Become a full stack developer with modern web technologies</p>
+            <div class="flex items-center gap-4 text-sm text-neutral-600 mb-4">
+                <span class="flex items-center gap-1">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    8 months
+                </span>
+                <span class="flex items-center gap-1">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                    </svg>
+                    15k+ enrolled
+                </span>
+            </div>
+            <button class="w-full py-2 text-blue-500 border border-blue-500 rounded-lg hover:bg-blue-50 transition-colors">Add to My Notebooks</button>
+        </div>
+
+        <!-- Cloud Computing -->
+        <div class="bg-white rounded-xl border border-neutral-200/20 p-6">
+            <div class="flex items-start justify-between mb-4">
+                <div>
+                    <h3 class="text-xl font-semibold text-neutral-800">Cloud Computing</h3>
+                    <div class="flex flex-wrap gap-2 mt-2">
+                        <span class="px-2 py-1 text-xs bg-blue-100 text-blue-700 rounded-full">AWS</span>
+                        <span class="px-2 py-1 text-xs bg-gray-100 text-gray-700 rounded-full">DevOps</span>
+                    </div>
+                </div>
+                <div class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-medium">
+                    92% Demand
+                </div>
+            </div>
+            <p class="text-neutral-600 mb-4">Master cloud platforms and deployment strategies</p>
+            <div class="flex items-center gap-4 text-sm text-neutral-600 mb-4">
+                <span class="flex items-center gap-1">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    5 months
+                </span>
+                <span class="flex items-center gap-1">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                    </svg>
+                    8k+ enrolled
+                </span>
+            </div>
+            <button class="w-full py-2 text-blue-500 border border-blue-500 rounded-lg hover:bg-blue-50 transition-colors">Add to My Notebooks</button>
+        </div>
+    </div>
+
+    <!-- Market Trends -->
+    <div class="mt-12">
+        <h2 class="text-xl font-semibold mb-6 text-neutral-800">Market Trends</h2>
+        <div class="bg-white rounded-xl border border-neutral-200/20 p-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-blue-500 mb-2">92%</div>
+                    <p class="text-neutral-600">Average Job Placement</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-green-500 mb-2">$85k</div>
+                    <p class="text-neutral-600">Average Starting Salary</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-purple-500 mb-2">15k+</div>
+                    <p class="text-neutral-600">Open Positions</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-yellow-500 mb-2">24%</div>
+                    <p class="text-neutral-600">YoY Growth</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

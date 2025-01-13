@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+
+{% block title %}Help - AITutor{% endblock %}
+
+{% block content %}
+<section id="help" class="min-h-screen p-6 lg:p-8 bg-neutral-50">
+    <div class="max-w-4xl mx-auto">
+        <!-- Header -->
+        <div class="mb-8">
+            <h1 class="text-3xl font-bold text-neutral-800">Help Center</h1>
+            <p class="text-neutral-600 mt-2">Find answers to common questions and get support</p>
+        </div>
+
+        <!-- Search -->
+        <div class="bg-white rounded-xl border border-neutral-200/20 p-6 mb-8">
+            <div class="relative">
+                <input type="text" placeholder="Search for help..." class="w-full pl-12 pr-4 py-3 border border-neutral-200/20 rounded-lg focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
+                <svg class="w-6 h-6 absolute left-4 top-3.5 text-neutral-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                </svg>
+            </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+            <div class="bg-white p-6 rounded-xl border border-neutral-200/20">
+                <svg class="w-8 h-8 text-blue-500 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                </svg>
+                <h3 class="text-lg font-semibold mb-2">Getting Started</h3>
+                <p class="text-neutral-600 mb-4">Learn the basics of using the platform</p>
+                <a href="#" class="text-blue-500 hover:text-blue-600">Learn more →</a>
+            </div>
+
+            <div class="bg-white p-6 rounded-xl border border-neutral-200/20">
+                <svg class="w-8 h-8 text-green-500 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+                </svg>
+                <h3 class="text-lg font-semibold mb-2">Notebooks Guide</h3>
+                <p class="text-neutral-600 mb-4">Managing and organizing your notebooks</p>
+                <a href="#" class="text-blue-500 hover:text-blue-600">Learn more →</a>
+            </div>
+
+            <div class="bg-white p-6 rounded-xl border border-neutral-200/20">
+                <svg class="w-8 h-8 text-purple-500 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                </svg>
+                <h3 class="text-lg font-semibold mb-2">Quick Tips</h3>
+                <p class="text-neutral-600 mb-4">Helpful tips to enhance your learning</p>
+                <a href="#" class="text-blue-500 hover:text-blue-600">Learn more →</a>
+            </div>
+        </div>
+
+        <!-- FAQs -->
+        <div class="bg-white rounded-xl border border-neutral-200/20 p-6 mb-8">
+            <h2 class="text-xl font-semibold mb-6">Frequently Asked Questions</h2>
+            <div class="space-y-4">
+                <details class="group">
+                    <summary class="flex items-center justify-between cursor-pointer p-4 rounded-lg hover:bg-neutral-50">
+                        <h3 class="font-medium">How do I create a new notebook?</h3>
+                        <svg class="w-5 h-5 text-neutral-500 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </summary>
+                    <p class="px-4 pb-4 text-neutral-600">Click on the "Create New Notebook" button from your dashboard or notebooks section. Choose a subject and customize your learning path.</p>
+                </details>
+
+                <details class="group">
+                    <summary class="flex items-center justify-between cursor-pointer p-4 rounded-lg hover:bg-neutral-50">
+                        <h3 class="font-medium">How is my progress tracked?</h3>
+                        <svg class="w-5 h-5 text-neutral-500 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </summary>
+                    <p class="px-4 pb-4 text-neutral-600">Your progress is automatically tracked as you complete lessons, quizzes, and exercises. View detailed statistics in your profile.</p>
+                </details>
+
+                <details class="group">
+                    <summary class="flex items-center justify-between cursor-pointer p-4 rounded-lg hover:bg-neutral-50">
+                        <h3 class="font-medium">Can I study offline?</h3>
+                        <svg class="w-5 h-5 text-neutral-500 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </summary>
+                    <p class="px-4 pb-4 text-neutral-600">Yes, you can download lessons for offline access. Your progress will sync when you reconnect to the internet.</p>
+                </details>
+            </div>
+        </div>
+
+        <!-- Contact Support -->
+        <div class="bg-white rounded-xl border border-neutral-200/20 p-6">
+            <h2 class="text-xl font-semibold mb-6">Still Need Help?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="text-center p-6 border border-neutral-200/20 rounded-lg">
+                    <svg class="w-8 h-8 mx-auto text-blue-500 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                    </svg>
+                    <h3 class="font-semibold mb-2">Email Support</h3>
+                    <p class="text-neutral-600 mb-4">Get help within 24 hours</p>
+                    <button class="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors">Contact Support</button>
+                </div>
+
+                <div class="text-center p-6 border border-neutral-200/20 rounded-lg">
+                    <svg class="w-8 h-8 mx-auto text-green-500 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                    </svg>
+                    <h3 class="font-semibold mb-2">Live Chat</h3>
+                    <p class="text-neutral-600 mb-4">Chat with our support team</p>
+                    <button class="px-6 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors">Start Chat</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
