@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Take Assessment - AITutor{% endblock %}
+
+{% block content %}
+<section id="take-assessment" class="min-h-screen p-6 lg:p-8 bg-neutral-50">
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-3xl font-bold text-neutral-800 mb-8">Take Assessment</h1>
+        <div class="bg-white p-6 rounded-xl border border-neutral-200/20">
+            <h2 class="text-xl font-semibold mb-4">Available Assessments</h2>
+            <div class="space-y-4">
+                <div class="p-4 border border-neutral-200/20 rounded-lg">
+                    <h3 class="font-medium text-neutral-800">Python Fundamentals Assessment</h3>
+                    <p class="text-sm text-neutral-600 mb-2">Test your knowledge on Python basics</p>
+                    <button class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors">Start Assessment</button>
+                </div>
+                <div class="p-4 border border-neutral-200/20 rounded-lg">
+                    <h3 class="font-medium text-neutral-800">Web Development Assessment</h3>
+                    <p class="text-sm text-neutral-600 mb-2">Evaluate your skills in HTML, CSS, and JavaScript</p>
+                    <button class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors">Start Assessment</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
