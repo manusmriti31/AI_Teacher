@@ -7,7 +7,7 @@
     <div class="max-w-4xl mx-auto">
         <h1 class="text-3xl font-bold text-neutral-800 mb-8">Chapter {{ chapter_id + 1 }}</h1>
         <div class="bg-white p-6 rounded-xl border border-neutral-200/20">
-            <pre class="text-neutral-800 whitespace-pre-wrap">{{ chapter_content }}</pre>
+            <div class="text-neutral-800">{{ chapter_content|safe }}</div>
         </div>
         <a href="{{ url_for('view_chapters') }}" class="mt-6 inline-block px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors">Back to Chapters</a>
     </div>
