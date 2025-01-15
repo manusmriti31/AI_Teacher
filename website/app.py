@@ -34,5 +34,21 @@ def community():
 def help():
     return render_template('help.html')
 
+@app.route('/new-notebook')
+def new_notebook():
+    return render_template('new_notebook.html')
+
+@app.route('/resume-learning')
+def resume_learning():
+    return render_template('resume_learning.html')
+
+@app.route('/take-assessment')
+def take_assessment():
+    return render_template('take_assessment.html')
+
+@app.route('/schedule-session')
+def schedule_session():
+    return render_template('schedule_session.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
