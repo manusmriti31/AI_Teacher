@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}View Chapters - AITutor{% endblock %}
+
+{% block content %}
+<section id="view-chapters" class="min-h-screen p-6 lg:p-8 bg-neutral-50">
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-3xl font-bold text-neutral-800 mb-8">Chapters</h1>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {% for chapter_id, chapter in enumerate(chapters) %}
+            <a href="{{ url_for('view_chapter', chapter_id=chapter_id) }}" class="block bg-white p-6 rounded-xl border border-neutral-200/20 hover:shadow-lg transition-shadow">
+                <h2 class="text-xl font-semibold text-neutral-800 mb-2">Chapter {{ chapter_id + 1 }}</h2>
+                <p class="text-neutral-600">{{ chapter[:100] }}...</p>  <!-- Preview first 100 characters -->
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -6,26 +6,94 @@
 <section id="new-notebook" class="min-h-screen p-6 lg:p-8 bg-neutral-50">
     <div class="max-w-4xl mx-auto">
         <h1 class="text-3xl font-bold text-neutral-800 mb-8">Create a New Notebook</h1>
-        <form class="bg-white p-6 rounded-xl border border-neutral-200/20">
-            <div class="mb-4">
+        <form id="notebook-form" class="bg-white p-6 rounded-xl border border-neutral-200/20">
+            <!-- Notebook Title -->
+            <div class="mb-6">
                 <label for="title" class="block text-sm font-medium text-neutral-600 mb-1">Notebook Title</label>
-                <input type="text" id="title" name="title" class="w-full px-4 py-2 border border-neutral-200/20 rounded-lg focus:border-blue-500 focus:ring-1 focus:ring-blue-500" placeholder="Enter notebook title">
+                <input type="text" id="title" name="title" class="w-full px-4 py-2 border border-neutral-200/20 rounded-lg focus:border-blue-500 focus:ring-1 focus:ring-blue-500" placeholder="Enter notebook title" required>
             </div>
-            <div class="mb-4">
-                <label for="description" class="block text-sm font-medium text-neutral-600 mb-1">Description</label>
-                <textarea id="description" name="description" class="w-full px-4 py-2 border border-neutral-200/20 rounded-lg focus:border-blue-500 focus:ring-1 focus:ring-blue-500" rows="4" placeholder="Enter notebook description"></textarea>
+
+            <!-- Goal -->
+            <div class="mb-6">
+                <label for="goal" class="block text-sm font-medium text-neutral-600 mb-1">What is your goal?</label>
+                <textarea id="goal" name="goal" class="w-full px-4 py-2 border border-neutral-200/20 rounded-lg focus:border-blue-500 focus:ring-1 focus:ring-blue-500" rows="3" placeholder="Describe your learning goal..." required></textarea>
             </div>
-            <div class="mb-4">
-                <label for="subject" class="block text-sm font-medium text-neutral-600 mb-1">Subject</label>
-                <select id="subject" name="subject" class="w-full px-4 py-2 border border-neutral-200/20 rounded-lg focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
-                    <option value="python">Python</option>
-                    <option value="web-development">Web Development</option>
-                    <option value="data-science">Data Science</option>
-                    <option value="ai-ml">AI/ML</option>
-                </select>
+
+            <!-- What You Know -->
+            <div class="mb-6">
+                <label for="what-you-know" class="block text-sm font-medium text-neutral-600 mb-1">What do you already know?</label>
+                <textarea id="what-you-know" name="what-you-know" class="w-full px-4 py-2 border border-neutral-200/20 rounded-lg focus:border-blue-500 focus:ring-1 focus:ring-blue-500" rows="3" placeholder="List the topics or skills you already know..." required></textarea>
             </div>
+
+            <!-- Level (Radio Buttons) -->
+            <div class="mb-6">
+                <label class="block text-sm font-medium text-neutral-600 mb-1">What is your current level?</label>
+                <div class="space-y-2">
+                    <label class="flex items-center">
+                        <input type="radio" name="level" value="beginner" class="form-radio h-4 w-4 text-blue-500 border-neutral-300 focus:ring-blue-500" required>
+                        <span class="ml-2 text-neutral-700">Beginner</span>
+                    </label>
+                    <label class="flex items-center">
+                        <input type="radio" name="level" value="intermediate" class="form-radio h-4 w-4 text-blue-500 border-neutral-300 focus:ring-blue-500" required>
+                        <span class="ml-2 text-neutral-700">Intermediate</span>
+                    </label>
+                    <label class="flex items-center">
+                        <input type="radio" name="level" value="advanced" class="form-radio h-4 w-4 text-blue-500 border-neutral-300 focus:ring-blue-500" required>
+                        <span class="ml-2 text-neutral-700">Advanced</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Submit Button -->
             <button type="submit" class="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors">Create Notebook</button>
         </form>
+
+        <!-- Response Container -->
+        <div id="response-container" class="mt-8 hidden">
+            <h2 class="text-2xl font-bold text-neutral-800 mb-4">Generated Content</h2>
+            <div id="generated-content" class="bg-white p-6 rounded-xl border border-neutral-200/20"></div>
+        </div>
     </div>
+
+    <!-- JavaScript for Form Submission -->
+    <script>
+        document.getElementById('notebook-form').addEventListener('submit', async function (e) {
+            e.preventDefault(); // Prevent default form submission
+
+            // Get form data
+            const formData = {
+                title: document.getElementById('title').value,
+                goal: document.getElementById('goal').value,
+                whatYouKnow: document.getElementById('what-you-know').value,
+                level: document.querySelector('input[name="level"]:checked').value,
+            };
+
+            try {
+                // Send data to Flask backend
+                const response = await fetch('/generate-content', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData),
+                });
+
+                if (!response.ok) {
+                    throw new Error('Failed to generate content');
+                }
+
+                // Parse the response
+                const data = await response.json();
+
+                // Redirect to the view-chapters page
+                if (data.success) {
+                    window.location.href = data.redirect_url;
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('An error occurred while generating content. Please try again.');
+            }
+        });
+    </script>
 </section>
 {% endblock %}
