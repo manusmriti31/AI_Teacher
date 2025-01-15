@@ -132,5 +132,48 @@ def view_chapter(chapter_id):
     else:
         return "Chapter not found", 404
 
+@app.route('/chat', methods=['POST'])
+def chat():
+    try:
+        # Get the user message and chapter ID from the request
+        data = request.json
+        user_message = data.get('message')
+        chapter_id = data.get('chapter_id')
+
+        # Get the chapter content
+        chapters = session.get('chapters', [])
+        if chapter_id is not None and 0 <= chapter_id < len(chapters):
+            chapter_content = chapters[chapter_id]
+        else:
+            chapter_content = "Chapter content not found."
+
+        # Prepare the request payload for Gemini API
+        payload = {
+            "contents": [
+                {
+                    "parts": [
+                        {"text": f"Chapter content: {chapter_content}\nUser message: {user_message}"}
+                    ]
+                }
+            ]
+        }
+
+        # Call the Gemini API
+        headers = {
+            'Content-Type': 'application/json',
+        }
+        response = requests.post(GEMINI_API_URL, headers=headers, json=payload)
+        response.raise_for_status()  # Raise an error for bad responses
+
+        # Extract the generated reply
+        reply = response.json().get('candidates', [{}])[0].get('content', {}).get('parts', [{}])[0].get('text', 'No reply generated.')
+
+        # Return the reply as JSON
+        return jsonify({'reply': reply})
+
+    except Exception as e:
+        print(f"Error: {e}")
+        return jsonify({'error': 'Failed to get response from Gemini API'}), 500
+
 if __name__ == '__main__':
     app.run(debug=True)

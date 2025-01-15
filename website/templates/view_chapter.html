@@ -11,5 +11,79 @@
         </div>
         <a href="{{ url_for('view_chapters') }}" class="mt-6 inline-block px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors">Back to Chapters</a>
     </div>
+
+    <!-- Chatbot Floating Window -->
+    <div id="chatbot-window" class="fixed bottom-4 right-4 w-80 bg-white p-4 rounded-xl border border-neutral-200/20 shadow-lg hidden">
+        <div class="flex justify-between items-center mb-4">
+            <h2 class="text-lg font-bold text-neutral-800">Chat with Gemini</h2>
+            <button id="close-chatbot" class="text-neutral-500 hover:text-neutral-800">&times;</button>
+        </div>
+        <div id="chat-container" class="space-y-4 max-h-64 overflow-y-auto">
+            <!-- Chat messages will be appended here -->
+        </div>
+        <div class="mt-4 flex">
+            <input type="text" id="chat-input" class="flex-1 px-4 py-2 border border-neutral-200/20 rounded-lg focus:border-blue-500 focus:ring-1 focus:ring-blue-500" placeholder="Type your message...">
+            <button id="send-button" class="ml-2 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors">Send</button>
+        </div>
+    </div>
+
+    <!-- Chatbot Toggle Button -->
+    <button id="open-chatbot" class="fixed bottom-4 right-4 px-4 py-2 bg-blue-500 text-white rounded-full shadow-lg hover:bg-blue-600 transition-colors">Chat</button>
 </section>
+
+<script>
+document.getElementById('open-chatbot').addEventListener('click', function () {
+    document.getElementById('chatbot-window').classList.remove('hidden');
+    this.classList.add('hidden');
+});
+
+document.getElementById('close-chatbot').addEventListener('click', function () {
+    document.getElementById('chatbot-window').classList.add('hidden');
+    document.getElementById('open-chatbot').classList.remove('hidden');
+});
+
+document.getElementById('send-button').addEventListener('click', async function () {
+    const input = document.getElementById('chat-input');
+    const message = input.value.trim();
+    if (!message) return;
+
+    // Display user message
+    const chatContainer = document.getElementById('chat-container');
+    const userMessage = document.createElement('div');
+    userMessage.className = 'text-right';
+    userMessage.innerHTML = `<div class="inline-block bg-blue-100 text-blue-800 px-4 py-2 rounded-lg mb-2">${message}</div>`;
+    chatContainer.appendChild(userMessage);
+
+    // Clear input
+    input.value = '';
+
+    try {
+        // Send message to Gemini API
+        const response = await fetch('/chat', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ message, chapter_id: {{ chapter_id }} }),
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to get response from Gemini API');
+        }
+
+        const data = await response.json();
+        const reply = data.reply;
+
+        // Display Gemini reply
+        const geminiMessage = document.createElement('div');
+        geminiMessage.className = 'text-left';
+        geminiMessage.innerHTML = `<div class="inline-block bg-gray-100 text-gray-800 px-4 py-2 rounded-lg mb-2">${reply}</div>`;
+        chatContainer.appendChild(geminiMessage);
+
+    } catch (error) {
+        console.error('Error:', error);
+        alert('An error occurred while communicating with the chatbot. Please try again.');
+    }
+});
+</script>
 {% endblock %}
