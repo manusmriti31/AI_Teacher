@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, jsonify, session, redirect, u
 import requests  # For making API calls
 from dotenv import load_dotenv
 import os
+import markdown
 
 load_dotenv()  # Load environment variables from .env file
 
@@ -72,14 +73,22 @@ def generate_content():
 
         # Prepare the prompt for the API
         prompt = f"""
-        Create a chapter-wise learning plan for a notebook titled "{title}".
+        Create a detailed chapter-wise learning plan for a notebook titled "{title}".
         - Goal: {goal}
         - Current Knowledge: {what_you_know}
         - Level: {level}
 
-        Directly start giving me the chapetrs contente seperated by line and no starting text or anything else.
-        Make sure that the content is allined with the goal and makes use of your existing knowledge.
-        The chapetr content should be well strucutred and each chapter should be of atleast 500 words.
+        For each chapter, provide the following:
+        1. **Chapter Title**: A clear and descriptive title for the chapter.
+        2. **Overview**: A brief introduction to the chapter's topic and its relevance to the overall goal.
+        3. **Sub-topics**: Break down the chapter into sub-topics, each with a clear focus.
+        4. **Key Concepts**: Explain the main ideas, theories, or principles covered in the chapter.
+        5. **Examples**: Include practical examples, case studies, or real-world applications to illustrate the concepts.
+        6. **Key Takeaways**: Summarize the most important points from the chapter.
+        7. **Exercises/Activities**: Suggest exercises, questions, or activities to reinforce learning.
+
+        Ensure each chapter is well-structured, with a good text length that provides depth and clarity. Separate each chapter with the special character '###'.
+        And just start from chapter 1, and then with the following chapters.
         """
 
         # Prepare the request payload for Gemini API
@@ -103,8 +112,8 @@ def generate_content():
         # Extract the generated content
         generated_content = response.json().get('candidates', [{}])[0].get('content', {}).get('parts', [{}])[0].get('text', 'No content generated.')
 
-        # Split the content into chapters
-        chapters = generated_content.split('\n\n')  # Assuming chapters are separated by double newlines
+        # Split the content into chapters based on the special character '###'
+        chapters = generated_content.split('###')
 
         # Store chapters in session
         session['chapters'] = chapters
@@ -128,7 +137,9 @@ def view_chapter(chapter_id):
     chapters = session.get('chapters', [])
     if 0 <= chapter_id < len(chapters):
         chapter_content = chapters[chapter_id]
-        return render_template('view_chapter.html', chapter_content=chapter_content, chapter_id=chapter_id)
+        # Convert Markdown to HTML
+        chapter_content_html = markdown.markdown(chapter_content)
+        return render_template('view_chapter.html', chapter_content=chapter_content_html, chapter_id=chapter_id)
     else:
         return "Chapter not found", 404
 
